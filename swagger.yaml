@@ -1,0 +1,2182 @@
+openapi: 3.0.3
+info:
+  title: API de gestión de tienda
+  description: Documentación generada a partir de las rutas Laravel proporcionadas.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000/api
+    description: Servidor local Laravel
+tags:
+  - name: Bebé
+    description: Operaciones CRUD de bebé
+  - name: Carrito
+    description: Operaciones CRUD de carrito
+  - name: Categoría
+    description: Operaciones CRUD de categoría
+  - name: Cliente
+    description: Operaciones CRUD de cliente
+  - name: Dirección
+    description: Operaciones CRUD de dirección
+  - name: Envío
+    description: Operaciones CRUD de envío
+  - name: Factura
+    description: Operaciones CRUD de factura
+  - name: Falla de producción
+    description: Operaciones CRUD de falla de producción
+  - name: Imagen de producto
+    description: Operaciones CRUD de imagen de producto
+  - name: Insumo
+    description: Operaciones CRUD de insumo
+  - name: Ítem del carrito
+    description: Operaciones CRUD de ítem del carrito
+  - name: Método de envío
+    description: Operaciones CRUD de método de envío
+  - name: Método de pago
+    description: Operaciones CRUD de método de pago
+  - name: Movimiento de stock
+    description: Operaciones CRUD de movimiento de stock
+  - name: Orden de producción
+    description: Operaciones CRUD de orden de producción
+  - name: Pedido
+    description: Operaciones CRUD de pedido
+  - name: Producto
+    description: Operaciones CRUD de producto
+  - name: Promoción
+    description: Operaciones CRUD de promoción
+  - name: Proveedor
+    description: Operaciones CRUD de proveedor
+  - name: Receta de producción
+    description: Operaciones CRUD de receta de producción
+  - name: Rol
+    description: Operaciones CRUD de rol
+  - name: Transacción de pago
+    description: Operaciones CRUD de transacción de pago
+  - name: Usuario
+    description: Operaciones CRUD de usuario
+  - name: Variante de producto
+    description: Operaciones CRUD de variante de producto
+paths:
+  /bebe:
+    get:
+      tags: [Bebé]
+      summary: Listar bebé
+      responses:
+        '200':
+          description: Lista de bebé
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Bebe' }
+    post:
+      tags: [Bebé]
+      summary: Crear bebé
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BebeInput'
+      responses:
+        '201':
+          description: Bebé creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bebe'
+        '422': { description: Error de validación }
+  /bebe/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Bebé]
+      summary: Obtener bebé por ID
+      responses:
+        '200':
+          description: Bebé encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bebe'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Bebé]
+      summary: Actualizar bebé
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BebeInput'
+      responses:
+        '200':
+          description: Bebé actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bebe'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Bebé]
+      summary: Eliminar bebé
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /carrito:
+    get:
+      tags: [Carrito]
+      summary: Listar carrito
+      responses:
+        '200':
+          description: Lista de carrito
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Carrito' }
+    post:
+      tags: [Carrito]
+      summary: Crear carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarritoInput'
+      responses:
+        '201':
+          description: Carrito creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Carrito'
+        '422': { description: Error de validación }
+  /carrito/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Carrito]
+      summary: Obtener carrito por ID
+      responses:
+        '200':
+          description: Carrito encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Carrito'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Carrito]
+      summary: Actualizar carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarritoInput'
+      responses:
+        '200':
+          description: Carrito actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Carrito'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Carrito]
+      summary: Eliminar carrito
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /categoria:
+    get:
+      tags: [Categoría]
+      summary: Listar categoría
+      responses:
+        '200':
+          description: Lista de categoría
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Categoria' }
+    post:
+      tags: [Categoría]
+      summary: Crear categoría
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoriaInput'
+      responses:
+        '201':
+          description: Categoría creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+        '422': { description: Error de validación }
+  /categoria/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Categoría]
+      summary: Obtener categoría por ID
+      responses:
+        '200':
+          description: Categoría encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Categoría]
+      summary: Actualizar categoría
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoriaInput'
+      responses:
+        '200':
+          description: Categoría actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categoria'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Categoría]
+      summary: Eliminar categoría
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /cliente:
+    get:
+      tags: [Cliente]
+      summary: Listar cliente
+      responses:
+        '200':
+          description: Lista de cliente
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Cliente' }
+    post:
+      tags: [Cliente]
+      summary: Crear cliente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteInput'
+      responses:
+        '201':
+          description: Cliente creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '422': { description: Error de validación }
+  /cliente/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Cliente]
+      summary: Obtener cliente por ID
+      responses:
+        '200':
+          description: Cliente encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Cliente]
+      summary: Actualizar cliente
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClienteInput'
+      responses:
+        '200':
+          description: Cliente actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cliente'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Cliente]
+      summary: Eliminar cliente
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /direccion:
+    get:
+      tags: [Dirección]
+      summary: Listar dirección
+      responses:
+        '200':
+          description: Lista de dirección
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Direccion' }
+    post:
+      tags: [Dirección]
+      summary: Crear dirección
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DireccionInput'
+      responses:
+        '201':
+          description: Dirección creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Direccion'
+        '422': { description: Error de validación }
+  /direccion/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Dirección]
+      summary: Obtener dirección por ID
+      responses:
+        '200':
+          description: Dirección encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Direccion'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Dirección]
+      summary: Actualizar dirección
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DireccionInput'
+      responses:
+        '200':
+          description: Dirección actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Direccion'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Dirección]
+      summary: Eliminar dirección
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /envio:
+    get:
+      tags: [Envío]
+      summary: Listar envío
+      responses:
+        '200':
+          description: Lista de envío
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Envio' }
+    post:
+      tags: [Envío]
+      summary: Crear envío
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvioInput'
+      responses:
+        '201':
+          description: Envío creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envio'
+        '422': { description: Error de validación }
+  /envio/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Envío]
+      summary: Obtener envío por ID
+      responses:
+        '200':
+          description: Envío encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envio'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Envío]
+      summary: Actualizar envío
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvioInput'
+      responses:
+        '200':
+          description: Envío actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envio'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Envío]
+      summary: Eliminar envío
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /factura:
+    get:
+      tags: [Factura]
+      summary: Listar factura
+      responses:
+        '200':
+          description: Lista de factura
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Factura' }
+    post:
+      tags: [Factura]
+      summary: Crear factura
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacturaInput'
+      responses:
+        '201':
+          description: Factura creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Factura'
+        '422': { description: Error de validación }
+  /factura/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Factura]
+      summary: Obtener factura por ID
+      responses:
+        '200':
+          description: Factura encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Factura'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Factura]
+      summary: Actualizar factura
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FacturaInput'
+      responses:
+        '200':
+          description: Factura actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Factura'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Factura]
+      summary: Eliminar factura
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /falla_produccion:
+    get:
+      tags: [Falla de producción]
+      summary: Listar falla de producción
+      responses:
+        '200':
+          description: Lista de falla de producción
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/FallaProduccion' }
+    post:
+      tags: [Falla de producción]
+      summary: Crear falla de producción
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FallaProduccionInput'
+      responses:
+        '201':
+          description: Falla de producción creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FallaProduccion'
+        '422': { description: Error de validación }
+  /falla_produccion/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Falla de producción]
+      summary: Obtener falla de producción por ID
+      responses:
+        '200':
+          description: Falla de producción encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FallaProduccion'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Falla de producción]
+      summary: Actualizar falla de producción
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FallaProduccionInput'
+      responses:
+        '200':
+          description: Falla de producción actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FallaProduccion'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Falla de producción]
+      summary: Eliminar falla de producción
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /imagen_producto:
+    get:
+      tags: [Imagen de producto]
+      summary: Listar imagen de producto
+      responses:
+        '200':
+          description: Lista de imagen de producto
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/ImagenProducto' }
+    post:
+      tags: [Imagen de producto]
+      summary: Crear imagen de producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImagenProductoInput'
+      responses:
+        '201':
+          description: Imagen de producto creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImagenProducto'
+        '422': { description: Error de validación }
+  /imagen_producto/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Imagen de producto]
+      summary: Obtener imagen de producto por ID
+      responses:
+        '200':
+          description: Imagen de producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImagenProducto'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Imagen de producto]
+      summary: Actualizar imagen de producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ImagenProductoInput'
+      responses:
+        '200':
+          description: Imagen de producto actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ImagenProducto'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Imagen de producto]
+      summary: Eliminar imagen de producto
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /insumo:
+    get:
+      tags: [Insumo]
+      summary: Listar insumo
+      responses:
+        '200':
+          description: Lista de insumo
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Insumo' }
+    post:
+      tags: [Insumo]
+      summary: Crear insumo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsumoInput'
+      responses:
+        '201':
+          description: Insumo creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Insumo'
+        '422': { description: Error de validación }
+  /insumo/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Insumo]
+      summary: Obtener insumo por ID
+      responses:
+        '200':
+          description: Insumo encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Insumo'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Insumo]
+      summary: Actualizar insumo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsumoInput'
+      responses:
+        '200':
+          description: Insumo actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Insumo'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Insumo]
+      summary: Eliminar insumo
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /item:
+    get:
+      tags: [Ítem del carrito]
+      summary: Listar ítem del carrito
+      responses:
+        '200':
+          description: Lista de ítem del carrito
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Item' }
+    post:
+      tags: [Ítem del carrito]
+      summary: Crear ítem del carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemInput'
+      responses:
+        '201':
+          description: Ítem del carrito creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '422': { description: Error de validación }
+  /item/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Ítem del carrito]
+      summary: Obtener ítem del carrito por ID
+      responses:
+        '200':
+          description: Ítem del carrito encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Ítem del carrito]
+      summary: Actualizar ítem del carrito
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ItemInput'
+      responses:
+        '200':
+          description: Ítem del carrito actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Item'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Ítem del carrito]
+      summary: Eliminar ítem del carrito
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /metodo_envio:
+    get:
+      tags: [Método de envío]
+      summary: Listar método de envío
+      responses:
+        '200':
+          description: Lista de método de envío
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/MetodoEnvio' }
+    post:
+      tags: [Método de envío]
+      summary: Crear método de envío
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetodoEnvioInput'
+      responses:
+        '201':
+          description: Método de envío creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetodoEnvio'
+        '422': { description: Error de validación }
+  /metodo_envio/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Método de envío]
+      summary: Obtener método de envío por ID
+      responses:
+        '200':
+          description: Método de envío encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetodoEnvio'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Método de envío]
+      summary: Actualizar método de envío
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetodoEnvioInput'
+      responses:
+        '200':
+          description: Método de envío actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetodoEnvio'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Método de envío]
+      summary: Eliminar método de envío
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /metodo_pago:
+    get:
+      tags: [Método de pago]
+      summary: Listar método de pago
+      responses:
+        '200':
+          description: Lista de método de pago
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/MetodoPago' }
+    post:
+      tags: [Método de pago]
+      summary: Crear método de pago
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetodoPagoInput'
+      responses:
+        '201':
+          description: Método de pago creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetodoPago'
+        '422': { description: Error de validación }
+  /metodo_pago/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Método de pago]
+      summary: Obtener método de pago por ID
+      responses:
+        '200':
+          description: Método de pago encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetodoPago'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Método de pago]
+      summary: Actualizar método de pago
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetodoPagoInput'
+      responses:
+        '200':
+          description: Método de pago actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetodoPago'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Método de pago]
+      summary: Eliminar método de pago
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /movimiento_stock:
+    get:
+      tags: [Movimiento de stock]
+      summary: Listar movimiento de stock
+      responses:
+        '200':
+          description: Lista de movimiento de stock
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/MovimientoStock' }
+    post:
+      tags: [Movimiento de stock]
+      summary: Crear movimiento de stock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MovimientoStockInput'
+      responses:
+        '201':
+          description: Movimiento de stock creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovimientoStock'
+        '422': { description: Error de validación }
+  /movimiento_stock/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Movimiento de stock]
+      summary: Obtener movimiento de stock por ID
+      responses:
+        '200':
+          description: Movimiento de stock encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovimientoStock'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Movimiento de stock]
+      summary: Actualizar movimiento de stock
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MovimientoStockInput'
+      responses:
+        '200':
+          description: Movimiento de stock actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovimientoStock'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Movimiento de stock]
+      summary: Eliminar movimiento de stock
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /orden_produccion:
+    get:
+      tags: [Orden de producción]
+      summary: Listar orden de producción
+      responses:
+        '200':
+          description: Lista de orden de producción
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/OrdenProduccion' }
+    post:
+      tags: [Orden de producción]
+      summary: Crear orden de producción
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrdenProduccionInput'
+      responses:
+        '201':
+          description: Orden de producción creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdenProduccion'
+        '422': { description: Error de validación }
+  /orden_produccion/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Orden de producción]
+      summary: Obtener orden de producción por ID
+      responses:
+        '200':
+          description: Orden de producción encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdenProduccion'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Orden de producción]
+      summary: Actualizar orden de producción
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrdenProduccionInput'
+      responses:
+        '200':
+          description: Orden de producción actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrdenProduccion'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Orden de producción]
+      summary: Eliminar orden de producción
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /pedido:
+    get:
+      tags: [Pedido]
+      summary: Listar pedido
+      responses:
+        '200':
+          description: Lista de pedido
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Pedido' }
+    post:
+      tags: [Pedido]
+      summary: Crear pedido
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PedidoInput'
+      responses:
+        '201':
+          description: Pedido creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido'
+        '422': { description: Error de validación }
+  /pedido/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Pedido]
+      summary: Obtener pedido por ID
+      responses:
+        '200':
+          description: Pedido encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Pedido]
+      summary: Actualizar pedido
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PedidoInput'
+      responses:
+        '200':
+          description: Pedido actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pedido'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Pedido]
+      summary: Eliminar pedido
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /producto:
+    get:
+      tags: [Producto]
+      summary: Listar producto
+      responses:
+        '200':
+          description: Lista de producto
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Producto' }
+    post:
+      tags: [Producto]
+      summary: Crear producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductoInput'
+      responses:
+        '201':
+          description: Producto creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Producto'
+        '422': { description: Error de validación }
+  /producto/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Producto]
+      summary: Obtener producto por ID
+      responses:
+        '200':
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Producto'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Producto]
+      summary: Actualizar producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductoInput'
+      responses:
+        '200':
+          description: Producto actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Producto'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Producto]
+      summary: Eliminar producto
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /promocion:
+    get:
+      tags: [Promoción]
+      summary: Listar promoción
+      responses:
+        '200':
+          description: Lista de promoción
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Promocion' }
+    post:
+      tags: [Promoción]
+      summary: Crear promoción
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromocionInput'
+      responses:
+        '201':
+          description: Promoción creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Promocion'
+        '422': { description: Error de validación }
+  /promocion/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Promoción]
+      summary: Obtener promoción por ID
+      responses:
+        '200':
+          description: Promoción encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Promocion'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Promoción]
+      summary: Actualizar promoción
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromocionInput'
+      responses:
+        '200':
+          description: Promoción actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Promocion'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Promoción]
+      summary: Eliminar promoción
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /proveedor:
+    get:
+      tags: [Proveedor]
+      summary: Listar proveedor
+      responses:
+        '200':
+          description: Lista de proveedor
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Proveedor' }
+    post:
+      tags: [Proveedor]
+      summary: Crear proveedor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProveedorInput'
+      responses:
+        '201':
+          description: Proveedor creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Proveedor'
+        '422': { description: Error de validación }
+  /proveedor/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Proveedor]
+      summary: Obtener proveedor por ID
+      responses:
+        '200':
+          description: Proveedor encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Proveedor'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Proveedor]
+      summary: Actualizar proveedor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProveedorInput'
+      responses:
+        '200':
+          description: Proveedor actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Proveedor'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Proveedor]
+      summary: Eliminar proveedor
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /receta_produccion:
+    get:
+      tags: [Receta de producción]
+      summary: Listar receta de producción
+      responses:
+        '200':
+          description: Lista de receta de producción
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/RecetaProduccion' }
+    post:
+      tags: [Receta de producción]
+      summary: Crear receta de producción
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecetaProduccionInput'
+      responses:
+        '201':
+          description: Receta de producción creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecetaProduccion'
+        '422': { description: Error de validación }
+  /receta_produccion/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Receta de producción]
+      summary: Obtener receta de producción por ID
+      responses:
+        '200':
+          description: Receta de producción encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecetaProduccion'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Receta de producción]
+      summary: Actualizar receta de producción
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecetaProduccionInput'
+      responses:
+        '200':
+          description: Receta de producción actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecetaProduccion'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Receta de producción]
+      summary: Eliminar receta de producción
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /rol:
+    get:
+      tags: [Rol]
+      summary: Listar rol
+      responses:
+        '200':
+          description: Lista de rol
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Rol' }
+    post:
+      tags: [Rol]
+      summary: Crear rol
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RolInput'
+      responses:
+        '201':
+          description: Rol creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rol'
+        '422': { description: Error de validación }
+  /rol/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Rol]
+      summary: Obtener rol por ID
+      responses:
+        '200':
+          description: Rol encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rol'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Rol]
+      summary: Actualizar rol
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RolInput'
+      responses:
+        '200':
+          description: Rol actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Rol'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Rol]
+      summary: Eliminar rol
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /transaccion_pago:
+    get:
+      tags: [Transacción de pago]
+      summary: Listar transacción de pago
+      responses:
+        '200':
+          description: Lista de transacción de pago
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/TransaccionPago' }
+    post:
+      tags: [Transacción de pago]
+      summary: Crear transacción de pago
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransaccionPagoInput'
+      responses:
+        '201':
+          description: Transacción de pago creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransaccionPago'
+        '422': { description: Error de validación }
+  /transaccion_pago/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Transacción de pago]
+      summary: Obtener transacción de pago por ID
+      responses:
+        '200':
+          description: Transacción de pago encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransaccionPago'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Transacción de pago]
+      summary: Actualizar transacción de pago
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TransaccionPagoInput'
+      responses:
+        '200':
+          description: Transacción de pago actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransaccionPago'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Transacción de pago]
+      summary: Eliminar transacción de pago
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /usuario:
+    get:
+      tags: [Usuario]
+      summary: Listar usuario
+      responses:
+        '200':
+          description: Lista de usuario
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Usuario' }
+    post:
+      tags: [Usuario]
+      summary: Crear usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsuarioInput'
+      responses:
+        '201':
+          description: Usuario creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+        '422': { description: Error de validación }
+  /usuario/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Usuario]
+      summary: Obtener usuario por ID
+      responses:
+        '200':
+          description: Usuario encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Usuario]
+      summary: Actualizar usuario
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsuarioInput'
+      responses:
+        '200':
+          description: Usuario actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Usuario]
+      summary: Eliminar usuario
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+  /variante_producto:
+    get:
+      tags: [Variante de producto]
+      summary: Listar variante de producto
+      responses:
+        '200':
+          description: Lista de variante de producto
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/VarianteProducto' }
+    post:
+      tags: [Variante de producto]
+      summary: Crear variante de producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VarianteProductoInput'
+      responses:
+        '201':
+          description: Variante de producto creado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VarianteProducto'
+        '422': { description: Error de validación }
+  /variante_producto/{id}:
+    parameters:
+      - $ref: '#/components/parameters/Id'
+    get:
+      tags: [Variante de producto]
+      summary: Obtener variante de producto por ID
+      responses:
+        '200':
+          description: Variante de producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VarianteProducto'
+        '404': { description: Recurso no encontrado }
+    put:
+      tags: [Variante de producto]
+      summary: Actualizar variante de producto
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VarianteProductoInput'
+      responses:
+        '200':
+          description: Variante de producto actualizado correctamente
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VarianteProducto'
+        '404': { description: Recurso no encontrado }
+        '422': { description: Error de validación }
+    delete:
+      tags: [Variante de producto]
+      summary: Eliminar variante de producto
+      responses:
+        '204': { description: Recurso eliminado correctamente }
+        '404': { description: Recurso no encontrado }
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: Identificador numérico del recurso
+      schema:
+        type: integer
+        format: int64
+        example: 1
+  schemas:
+    Bebe:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    BebeInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Carrito:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    CarritoInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Categoria:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    CategoriaInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Cliente:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    ClienteInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Direccion:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    DireccionInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Envio:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    EnvioInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Factura:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    FacturaInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    FallaProduccion:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    FallaProduccionInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    ImagenProducto:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    ImagenProductoInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Insumo:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    InsumoInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Item:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    ItemInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    MetodoEnvio:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    MetodoEnvioInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    MetodoPago:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    MetodoPagoInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    MovimientoStock:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    MovimientoStockInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    OrdenProduccion:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    OrdenProduccionInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Pedido:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    PedidoInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Producto:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    ProductoInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Promocion:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    PromocionInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Proveedor:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    ProveedorInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    RecetaProduccion:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    RecetaProduccionInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Rol:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    RolInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    TransaccionPago:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    TransaccionPagoInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    Usuario:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    UsuarioInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
+    VarianteProducto:
+      type: object
+      description: Modelo de respuesta. Reemplaza las propiedades de ejemplo por las columnas reales de tu tabla.
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          nullable: true
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+    VarianteProductoInput:
+      type: object
+      description: Datos de entrada. Agrega aquí los campos definidos en el FormRequest o modelo Laravel.
+      additionalProperties: true
+      example: {}
